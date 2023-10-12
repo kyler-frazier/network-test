@@ -1,0 +1,17 @@
+version: "3.5"
+
+services:
+  network-test:
+    build:
+      context: .
+    command: /app/main.py
+    container_name: network-test
+    expose:
+      - "8080/tcp"
+    image: kylerfrazier/network-test
+    networks:
+      - metrics
+
+networks:
+  metrics:
+    external: true
